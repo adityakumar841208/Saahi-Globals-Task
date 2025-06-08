@@ -11,13 +11,14 @@ const port = 3000;
 
 // Middleware
 app.use(cors({
-    origin: process.env.FRONTEND || 'http://localhost:5173',
+    origin: process.env.FRONTEND_URL,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }));
 app.use(express.json());
 
 // Connect to the database
 connectDB()
+
 
 // Simple login endpoint for verification
 app.post('/', (req, res) => {
