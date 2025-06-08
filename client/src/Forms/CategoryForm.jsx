@@ -17,7 +17,7 @@ const CategoryForm = () => {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:3000/api/categories/create', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/categories/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

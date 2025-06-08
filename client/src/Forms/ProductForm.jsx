@@ -27,7 +27,7 @@ const ProductForm = () => {
     const fetchCategories = async () => {
       setIsFetchingCategories(true);
       try {
-        const response = await fetch('http://localhost:3000/api/categories/get');
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/categories/get`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch categories');
@@ -60,7 +60,7 @@ const ProductForm = () => {
       console.log('Fetching subcategories for categoryId:', productData.categoryId);
 
       try {
-        const response = await fetch(`http://localhost:3000/api/subcategories/getsubcat/${productData.categoryId}`);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/subcategories/getsubcat/${productData.categoryId}`);
         if (!response.ok) throw new Error('Failed to fetch subcategories');
 
         const data = await response.json();
@@ -113,7 +113,7 @@ const ProductForm = () => {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:3000/api/products/create', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/products/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

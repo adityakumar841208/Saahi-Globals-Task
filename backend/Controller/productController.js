@@ -23,6 +23,22 @@ const createProduct = async (req, res) => {
     }
 }
 
+//to get a product by id
+const getProductById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const product = await Product.findById(id);
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.status(200).json(product);
+    }
+    catch (error) {
+        console.error('Error fetching product by ID:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 // to get all product
 const getProduct = async (req, res) => {
     try {
@@ -81,5 +97,6 @@ module.exports = {
     createProduct,
     getProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getProductById
 };

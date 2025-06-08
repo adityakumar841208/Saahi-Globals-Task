@@ -6,10 +6,14 @@ const {
     createProduct, 
     updateProduct, 
     deleteProduct,
+    getProductById,
 } = require('../Controller/productController');
 
 // Get all products
 router.get('/get', getProduct);
+
+//get product by id
+router.get('/getOneProd/:id', getProductById);
 
 // Create new product
 router.post('/create', createProduct);

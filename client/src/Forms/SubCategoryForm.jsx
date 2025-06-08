@@ -13,7 +13,7 @@ const SubCategoryForm = () => {
     const fetchCategories = async () => {
       setIsFetchingCategories(true);
       try {
-        const response = await fetch('http://localhost:3000/api/categories/get');
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/categories/get`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch categories');
@@ -49,7 +49,7 @@ const SubCategoryForm = () => {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:3000/api/subcategories/create', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/subcategories/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
